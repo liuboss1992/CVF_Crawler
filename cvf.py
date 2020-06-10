@@ -40,7 +40,7 @@ def cvf_spider(conference):
 
         os.system('wget -q -O ./'+ py_conference + '/' + match[i] + ' http://openaccess.thecvf.com/content_CVPR_2019/papers/'+ match[i])
 
-        break # Use break for test
+        #break # Use break for test
 
     # Clear cache
     os.system('rm page')
