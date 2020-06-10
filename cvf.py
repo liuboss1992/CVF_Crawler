@@ -38,7 +38,7 @@ def cvf_spider(conference):
     for (i,paper) in enumerate(match):
         print('Downloading the {}th paper: {}'.format(i+1,paper))
 
-        os.system('wget -q -O ./'+ py_conference + '/' + match[i] + ' http://openaccess.thecvf.com/content_CVPR_2019/papers/'+ match[i])
+        os.system('wget -q -O ./'+ py_conference + '/' + match[i] + ' http://openaccess.thecvf.com/content_'+folder_conference+'/papers/'+ match[i])
 
         #break # Use break for test
 
