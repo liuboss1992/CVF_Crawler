@@ -7,37 +7,47 @@ import re
 import os
 
 def cvf_spider(conference):
+
     py_conference = conference.replace(' ','')
     #print(py_conference)
     folder_conference = conference.replace(' ','_')
     #print(folder_conference)
 
+    # Get the webpage file
     os.system("wget -q http://openaccess.thecvf.com/"+py_conference+".py -O page")
+
+
+    # Read the webpage
     f = open('./page', 'r')
     data = f.read()
     f.close()   
 
+    # Regular matching & Get the pdf name
     key = data
     p1 = r"papers/(\S+)\">pdf</a>"
 
     pattern1 = re.compile(p1,re.DOTALL)
     match = re.findall(pattern1,key)
 
+    # Create folder
     folder = os.path.exists('./'+py_conference)
     if not folder:
         os.makedirs('./'+py_conference)
 
+    # Download PDF
     for (i,paper) in enumerate(match):
-        print('Downloading the {}th paper: {}'.format(i,paper))
+        print('Downloading the {}th paper: {}'.format(i+1,paper))
 
         os.system('wget -q -O ./'+ py_conference + '/' + match[i] + ' http://openaccess.thecvf.com/content_CVPR_2019/papers/'+ match[i])
 
-        break
+        break # Use break for test
 
+    # Clear cache
     os.system('rm page')
 
 
 if __name__ == "__main__":
+
     conferences = ['CVPR 2020','WACV 2020','ICCV 2019','CVPR 2019','CVPR 2018','ICCV 2017','CVPR 2017','CVPR 2016','ICCV 2015','CVPR 2015','CVPR 2014','ICCV 2013','CVPR 2013','ECCV 2018']
     for (i,paper) in enumerate(conferences):
         print('Index {}: {}'.format(i+1,paper))
