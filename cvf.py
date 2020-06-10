@@ -29,7 +29,10 @@ def cvf_spider(conference):
 
     for (i,paper) in enumerate(match):
         print('Downloading the {}th paper: {}'.format(i,paper))
-        #os.system('wget -q http://openaccess.thecvf.com/content_CVPR_2019/papers/'+ match[i])
+
+        os.system('wget -q -O ./'+ py_conference + '/' + match[i] + ' http://openaccess.thecvf.com/content_CVPR_2019/papers/'+ match[i])
+
+        break
 
     os.system('rm page')
 
@@ -50,7 +53,7 @@ if __name__ == "__main__":
         if y_n == 0:
             print('Exit')
         else:
-            print('Now Download Papers in {}'.format(conference))
+            print('Now Download Papers in {}.'.format(conference))
             
             cvf_spider(conference)
     print('All Papers Downloaded!')
