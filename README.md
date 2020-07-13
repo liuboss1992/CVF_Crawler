@@ -5,7 +5,7 @@
 Crawler for Computer Vision Foundation papers. Powered by [Boss Liu](https://liuboss1992.github.io/).
 
 # Requirements
-* python
+* python (2or3)
 * wget
 
 # How To
